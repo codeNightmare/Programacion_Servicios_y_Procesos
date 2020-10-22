@@ -3,6 +3,7 @@ package planificadorSTF;
 import java.util.ArrayList;
 import java.util.Collections;
 
+
 public class procesoMain {
 
 	private static final int MAX_PROCESOS = 5;
@@ -28,7 +29,7 @@ public class procesoMain {
 			proceso.add(pi);
 		}
 		
-		// Collections.shuffle: m�todo usado para permutar aleatoriamente la lista 
+		// Collections.shuffle: metodo usado para permutar aleatoriamente la lista 
 		//especificada utilizando una fuente predeterminada de aleatoriedad.
 		Collections.shuffle(proceso);
 		

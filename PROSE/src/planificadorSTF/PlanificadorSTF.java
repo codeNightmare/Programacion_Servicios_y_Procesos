@@ -22,7 +22,7 @@ public class PlanificadorSTF {
 	
 	// Para que sea unico crea un objeto de la clase (Singleton).
 	public static PlanificadorSTF getSingletonInstance() {
-		if (planificador != null) {
+		if (planificador == null) {
 			planificador = new PlanificadorSTF();
 			
 		} else {
@@ -34,7 +34,7 @@ public class PlanificadorSTF {
 	public Proceso get() {
 		
 		long inicioMilis, finMilis, totalMilis;
-		Proceso procesoActual = ss.remove();
+		Proceso procesoActual = linkedProceso.poll();
 		
 		if (procesoActual != null) {
 			try {
@@ -48,6 +48,8 @@ public class PlanificadorSTF {
 			
 				finMilis = System.currentTimeMillis();
 				System.out.println("Hora fin: " + finMilis);
+				
+				System.out.println("Duración: " + procesoActual.getDuracion());
 			
 				totalMilis = finMilis - inicioMilis;
 				System.out.println("--> Duracion del hilo (" + procesoActual.getDuracion() + ") " + 
@@ -65,7 +67,7 @@ public class PlanificadorSTF {
 	}
 	
 	public void put(Proceso pi) {
-		ss.add(pi);
+		linkedProceso.add(pi);
 	}
 	
 	public void sirve() {
