@@ -8,7 +8,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class copiaFicheroTexto {
+public class Ejer1CopiaFicheroTexto {
 
 	private static final String FICHERO_ORIGINAL = "src/EjerFicheros/original.txt";
 	private static final String FICHERO_FINAL = "src/EjerFicheros/final.txt";
@@ -23,6 +23,7 @@ public class copiaFicheroTexto {
 			System.out.println("Fin");
 		}
 	}
+	
 	
 	private static void copiarFicheroEnOtro () {
 		
