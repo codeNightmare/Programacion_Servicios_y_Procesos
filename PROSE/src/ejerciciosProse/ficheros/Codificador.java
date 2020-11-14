@@ -1,4 +1,4 @@
-package EjerFicheros;
+package ejerciciosProse.ficheros;
 
 public abstract class Codificador {
 	private static final int DESPLAZAMIENTO_CESAR = 3;
