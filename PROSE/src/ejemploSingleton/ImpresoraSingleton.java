@@ -1,4 +1,4 @@
-package EjemploSingleton;
+package ejemploSingleton;
 
 public class ImpresoraSingleton {
 

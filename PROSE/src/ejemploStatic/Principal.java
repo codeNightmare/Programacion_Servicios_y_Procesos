@@ -1,4 +1,4 @@
-package EjemploStatic;
+package ejemploStatic;
 
 public class Principal {
 

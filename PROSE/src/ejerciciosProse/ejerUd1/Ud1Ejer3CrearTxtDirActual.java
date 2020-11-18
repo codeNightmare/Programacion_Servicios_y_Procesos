@@ -1,13 +1,14 @@
 package ejerciciosProse.ejerUd1;
+
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 
-/*
- * Crea una clase Java cuyo método main liste los ficheros del directorio actual
- * y los guarde en un fichero de texto.
- */
 
 public class Ud1Ejer3CrearTxtDirActual {
 
@@ -16,36 +17,44 @@ public class Ud1Ejer3CrearTxtDirActual {
 	
 	public static void main(String[] args) {
 		
-		File direc = new File(DIRECTORIO_ACTUAL);
+		File fichero = new File(FICHERO_NUEVO);
 		
-		if (!direc.isDirectory()) {
+		if (!fichero.isFile()) {
 			System.out.println("El fichero " + DIRECTORIO_ACTUAL + " no es un directorio.");
 			
 		} else {
-			listarDirectorios(direc);
+			listarDirectorios(fichero);
 			System.out.println("Fin");
 		}
 
 	}
 	
-	private static void listarDirectorios(File direc) {
+	private static void listarDirectorios(File fichero) {
 		
-		String[] arrayFicheros;
+		Runtime rt = Runtime.getRuntime();
+		String comandoLinux = "ls";
+		String comandoWindows = "CMD /C DIR";
 		
-		arrayFicheros = direc.list();
-		
-		try (
-				BufferedWriter filtroEscritura = new BufferedWriter(new FileWriter(FICHERO_NUEVO))
-				) {
+		String comando = comandoLinux;
+		Process p = null;
+		try {
+			p = rt.exec(comando);
 			
-			for (int i = 0; i < arrayFicheros.length; i++) {
-				
-				filtroEscritura.write("Fechero " + (i+1) + ": " + arrayFicheros[i]);
+			// No se cierra porque no crea un flujo, solo referencia la entrada.
+			InputStream is = p.getInputStream();
+			BufferedReader br = new BufferedReader(new InputStreamReader(is));
+			BufferedWriter filtroEscritura = new BufferedWriter(new FileWriter(fichero));
+			
+			String linea;
+			while ((linea = br.readLine()) != null) {
+				filtroEscritura.write(linea);
 				filtroEscritura.newLine();
 			}
 			
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			filtroEscritura.close();
+			// No lo pide pero deja ponerlo, duda br.close();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 

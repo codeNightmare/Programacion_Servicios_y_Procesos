@@ -8,7 +8,8 @@ public class Ud1Ejer1V2 {
 				
 		try {
 			// Ejecutar el proceso de firefox (Ubuntu).
-			p = rt.exec("firefox");
+			// Proceso y url: nos abre firefox en esa web.
+			p = rt.exec("firefox iescristobaldemonroy.es");
 			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

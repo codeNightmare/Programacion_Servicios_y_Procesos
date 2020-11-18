@@ -1,5 +1,9 @@
 package ejerciciosProse.ejerUd1;
-import java.io.File;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 /*
  * UD 1 - Ejer 2
@@ -8,28 +12,31 @@ import java.io.File;
  */
 public class Ud1Ejer2Listar {
 
-	private static final String DIRECTORIO_ACTUAL = "./";
+	
 	public static void main(String[] args) {
 
-		File direc = new File(DIRECTORIO_ACTUAL);
+		Runtime rt = Runtime.getRuntime();
+		String comandoLinux = "ls";
+		String comandoWindows = "CMD /C DIR";
 		
-		if (!direc.isDirectory()) {
-			System.out.println("El fichero " + DIRECTORIO_ACTUAL + " no es un directorio.");
+		String comando = comandoLinux;
+		Process p = null;
+		try {
+			p = rt.exec(comando);
 			
-		} else {
-			listarDirectorios(direc);
+			// No se cierra porque no crea un flujo, solo referencia la entrada.
+			InputStream is = p.getInputStream();
+			BufferedReader br = new BufferedReader(new InputStreamReader(is));
+			
+			String linea;
+			while ((linea = br.readLine()) != null) {
+				System.out.println(linea);
+			}
+			// No lo pide pero deja ponerlo, duda br.close();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 	
-	private static void listarDirectorios(File direc) {
-		
-		String[] arrayFicheros;
-		
-		arrayFicheros = direc.list();
-		
-		for (int i = 0; i < arrayFicheros.length; i++) {
-			System.out.println("Fichero " + (i+1) + ": " + arrayFicheros[i]);
-		}
-	}
 
 }

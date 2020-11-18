@@ -1,4 +1,4 @@
-package EjemploStatic;
+package ejemploStatic;
 
 public class Persona {
 	private String nombre;
@@ -11,7 +11,7 @@ public class Persona {
 	
 	// Accede SOLO a las variables ststicas, this y las otras fallan
 	public static void miMetodo(String texto) {
-//		System.out.println(nombre + ": " + texto + " persona número " + cantPersona);
+//		System.out.println(nombre + ": " + texto + " persona nï¿½mero " + cantPersona);
 	}
 
 }

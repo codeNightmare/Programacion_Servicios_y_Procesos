@@ -9,7 +9,7 @@ public class Ud1Ejer6 {
 
 	public static void main(String[] args) {
 		
-
 	}
+			
 
 }
