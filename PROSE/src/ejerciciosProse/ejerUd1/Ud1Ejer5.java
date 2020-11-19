@@ -16,40 +16,41 @@ public class Ud1Ejer5 {
 		String comandoLinux = "ls -help";	// ls --help
 		String comandoWindows = "cmd /c help -dir";	// help dir
 						
-		String comando = comandoLinux;
-		String linea;
+		String comando = comandoWindows;
 		Process p = null;
-		InputStream errores;
-				
+		
 		try {
 			p = Runtime.getRuntime().exec(comando);
-							
-			// No se cierra porque no crea un flujo, solo referencia la entrada.
-			InputStream is = p.getInputStream();
-			BufferedReader br = new BufferedReader(new InputStreamReader(is));
 					
-			int status = p.waitFor();
-					
-			if (status != 0) {
-				errores = p.getErrorStream();
-				// pintar el valor ?
-				for (int i = 0; i < errores.available(); i++) {
-		            System.out.println("" + errores.read());
-		         }
-						
-			} else {
-						
-				linea = br.readLine();
-				while (linea != null) {
-					System.out.println(linea);
-					linea = br.readLine();
-				}
-						
-			}
-				
-			// No lo pide pero deja ponerlo, duda br.close();
-		} catch (IOException | InterruptedException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
+		} 
+		
+		int status;
+		BufferedReader br = null;
+		
+		try {
+			status = p.waitFor();
+			System.out.println("El comando " + comando + " ha resultado " + status);
+			System.out.println("La salida ha sido: ");
+			
+			InputStream errStream = p.getErrorStream();
+			br = new BufferedReader(new InputStreamReader(errStream));
+			
+			String linea = "";
+			linea = br.readLine();
+			while(linea != null) {
+				System.out.println(linea);
+				linea = br.readLine();
+			}
+		} catch (InterruptedException | IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				br.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 
 	}
