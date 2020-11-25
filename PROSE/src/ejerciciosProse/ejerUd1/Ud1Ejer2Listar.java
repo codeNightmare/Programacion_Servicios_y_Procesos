@@ -16,25 +16,34 @@ public class Ud1Ejer2Listar {
 	public static void main(String[] args) {
 
 		Runtime rt = Runtime.getRuntime();
-		String comandoLinux = "ls";
+		String comandoLinux = "ls -help";
 		String comandoWindows = "CMD /C DIR";
 		
-		String comando = comandoLinux;
+		String comando = comandoWindows;
 		Process p = null;
+		BufferedReader br = null; 
+		
 		try {
-			p = rt.exec(comando);
-			
-			// No se cierra porque no crea un flujo, solo referencia la entrada.
+			p = rt.exec(comando);		
+		
 			InputStream is = p.getInputStream();
-			BufferedReader br = new BufferedReader(new InputStreamReader(is));
+			br = new BufferedReader(new InputStreamReader(is));
 			
 			String linea;
-			while ((linea = br.readLine()) != null) {
+			while ((linea = br.readLine())!=null) {
 				System.out.println(linea);
 			}
-			// No lo pide pero deja ponerlo, duda br.close();
+			
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			try {
+				br.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	
