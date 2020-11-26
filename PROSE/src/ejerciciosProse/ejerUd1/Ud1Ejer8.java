@@ -19,9 +19,10 @@ public class Ud1Ejer8 {
 		System.out.println(variablesEntorno);
 		
 		List<String> listaCommand = new ArrayList<String>();
-		listaCommand.add("CMD");
-		listaCommand.add("/C");
-		listaCommand.add("DIR");
+		//listaCommand.add("ls");
+		//listaCommand.add("--help");
+		listaCommand.add("help");
+		listaCommand.add("dir");
 		
 		ProcessBuilder pb2 = new ProcessBuilder(listaCommand);
 		System.out.println(pb2.command());

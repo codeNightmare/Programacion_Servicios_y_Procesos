@@ -3,9 +3,8 @@ package ejerciciosProse.ejerUd1;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
+
 
 /*
  * Ud.1 Act.9 - método main cree un ProcessBuilder con un List de String realizando 
@@ -17,28 +16,39 @@ import java.util.Map;
 public class Ud1Ejer9 {
 
 	public static void main(String[] args) {
-		String comandoLinux = "ls -help";
-		String comandoWindows = "CMD /C DIR";
+		//String comandoLinux = "ls -help";
+		//String comandoWindows = "CMD /C DIR"; DA ERROR por lo que uso lista
 		
-		String comando = comandoWindows;
+		//String comando = comandoWindows;
+		ProcessBuilder pb;
+		Process p;
+		int status = -1;
 		
-		ProcessBuilder pb1 = new ProcessBuilder(comando);
-		List<String> listaDirectorio = 
+		List<String> lista = new ArrayList<>();
+		lista.add("CMD");
+		lista.add("/C");
+		lista.add("DIR");
+		
 		try {
-			Process p = pb1.start();
+			pb = new ProcessBuilder(lista);
 			
-		} catch (IOException e) {
+			pb.redirectError(new File("..\\..\\error_ejer9.txt"));
+			pb.redirectInput(new File("..\\..\\salida_ejer9.txt"));
+			
+			p = pb.start();
+			
+			status = p.waitFor();
+			System.out.println("Resultado: " + status);
+			
+			if (status != 0) {
+				System.out.println("1. Dio error");
+			} else {
+				System.out.println("2. Todo ok");
+			}
+			
+		} catch (IOException | InterruptedException  e) {
 			e.printStackTrace();
 		}
-		System.out.println(pb1.command());
-//		List<String> listaFicheros = pb1.command();
-//		
-//		File directorioTrabajo = pb1.directory();
-//		
-//		for (int i = 0; i < listaFicheros.size(); i++) {
-//			System.out.println(i + ") " + directorioTrabajo + ": " + listaFicheros.get(i));
-//		}
-		
 		
 		
 
