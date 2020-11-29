@@ -32,8 +32,8 @@ public class Ud1Ejer9 {
 		try {
 			pb = new ProcessBuilder(lista);
 			
-			pb.redirectError(new File("..\\..\\error_ejer9.txt"));
-			pb.redirectInput(new File("..\\..\\salida_ejer9.txt"));
+			pb.redirectError(new File("error_ejer9.txt"));
+			pb.redirectOutput(new File("salida_ejer9.txt"));
 			
 			p = pb.start();
 			
