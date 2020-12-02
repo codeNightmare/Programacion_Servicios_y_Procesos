@@ -23,17 +23,21 @@ public class Ud1Ejer9 {
 		ProcessBuilder pb;
 		Process p;
 		int status = -1;
+		File fileError, fileOutput;
 		
 		List<String> lista = new ArrayList<>();
 		lista.add("CMD");
 		lista.add("/C");
 		lista.add("DIR");
 		
+		fileError = new File("error_ejer9.txt");
+		fileOutput =  new File("salida_ejer9.txt");
+		
 		try {
 			pb = new ProcessBuilder(lista);
 			
-			pb.redirectError(new File("error_ejer9.txt"));
-			pb.redirectOutput(new File("salida_ejer9.txt"));
+			pb.redirectError(fileError);
+			pb.redirectOutput(fileOutput);
 			
 			p = pb.start();
 			
