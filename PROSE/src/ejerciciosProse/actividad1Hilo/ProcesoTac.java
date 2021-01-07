@@ -1,4 +1,4 @@
-package actividad1Hilo;
+package ejerciciosProse.actividad1Hilo;
 
 public class ProcesoTac extends Thread {
 
