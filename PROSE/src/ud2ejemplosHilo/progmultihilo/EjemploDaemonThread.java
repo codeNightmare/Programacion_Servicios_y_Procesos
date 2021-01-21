@@ -1,7 +1,7 @@
 /**
  * 
  */
-package PSP.UD02.progmultihilo;
+package ud2ejemplosHilo.progmultihilo;
 
 /**
  * @author JESUS

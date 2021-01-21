@@ -1,4 +1,4 @@
-package PSP.UD02.progmultihilo;
+package ud2ejemplosHilo.progmultihilo;
 
 public class HiloSimple extends Thread {
 
