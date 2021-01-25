@@ -20,7 +20,7 @@ public class Producto {
 	public void recogerLetra(char letra) {
 		while(!estaVacia) {
 			try {
-				wait(100);
+				wait();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
