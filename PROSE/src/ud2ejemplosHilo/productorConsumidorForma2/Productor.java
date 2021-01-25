@@ -17,7 +17,7 @@ public class Productor extends Thread {
 	public void run() {
 		char letra;
 		
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 5; i++) {
 			letra = alfabeto.charAt(i);
 			producto.recogerLetra(letra);
 			try {

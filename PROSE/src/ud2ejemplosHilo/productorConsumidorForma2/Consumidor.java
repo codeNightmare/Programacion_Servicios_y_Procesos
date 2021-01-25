@@ -15,7 +15,7 @@ public class Consumidor extends Thread {
 	public void run() {
 		char letra;
 		
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 5; i++) {
 			letra = producto.devolverLetra();
 			try {
 				sleep(100);
