@@ -6,9 +6,11 @@ package ud2ejemplosHilo.productorConsumidorForma1;
 public class Consumidor extends Thread {
 
 	private Producto producto;
+	private int cantidadEjecucion;
 	
-	public Consumidor(Producto p) {
+	public Consumidor(Producto p, int vueltas) {
 		this.producto = p;
+		this.cantidadEjecucion = vueltas;
 	}
 
 	@Override
@@ -16,7 +18,7 @@ public class Consumidor extends Thread {
 		synchronized (producto) {
 			char letra;
 			
-			for (int i = 0; i < 5; i++) {
+			for (int i = 0; i < cantidadEjecucion; i++) {
 				letra = producto.devolverLetra();
 				try {
 					sleep(100);

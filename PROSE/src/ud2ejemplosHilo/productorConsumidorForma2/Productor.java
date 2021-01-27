@@ -8,16 +8,18 @@ public class Productor extends Thread {
 
 	private String alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	private Producto producto;
+	private int cantidadEjecucion;
 	
-	public Productor(Producto p) {
+	public Productor(Producto p, int vuelta) {
 		this.producto = p;
+		this.cantidadEjecucion = vuelta;
 	}
 
 	@Override
 	public void run() {
 		char letra;
 		
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < cantidadEjecucion; i++) {
 			letra = alfabeto.charAt(i);
 			producto.recogerLetra(letra);
 			try {

@@ -5,13 +5,14 @@ package ud2ejemplosHilo.productorConsumidorForma2;
  */
 public class Producto {
 
-	private static final int MAX_LONG_COLA = 5;
 	private char[] cola;
 	private int posicionArray;
 	private boolean estaVacia;
+	private int cantidadEjecucion;
 	
-	public Producto() {
-		cola = new char[MAX_LONG_COLA];
+	public Producto(int vuelta) {
+		this.cantidadEjecucion = vuelta;
+		cola = new char[cantidadEjecucion];
 		posicionArray = 0;
 		estaVacia = true;
 	}
@@ -27,13 +28,13 @@ public class Producto {
 				}
 			}
 			
-			if(posicionArray >= MAX_LONG_COLA) {
+			cola[posicionArray] = letra;
+			posicionArray++;
+			System.out.println("Guardo la letra " + letra);
+			
+			if(posicionArray == cantidadEjecucion) {
 				estaVacia = false;
-				posicionArray--; // Hace las 5 posiciones + 1 que sobra.
-			} else {
-				cola[posicionArray] = letra;
-				posicionArray++;
-				System.out.println("Guardo la letra " + letra);
+				posicionArray--;
 			}
 			notify();
 		}	
@@ -51,15 +52,15 @@ public class Producto {
 			}
 		}
 		
-		if(posicionArray <= 0) {
-			estaVacia = false;
+		letra = cola[posicionArray];
+		posicionArray--;
+		System.out.println("Devuelvo la letra " + letra);
+		
+		if(posicionArray == -1) {
+			estaVacia = true;
 			posicionArray++;
-		} else {
-			letra = cola[posicionArray];
-			posicionArray--;
-			System.out.println("Devuelvo la letra " + letra);
 		}
-			
+		
 		notify();
 		return letra;
 	}
