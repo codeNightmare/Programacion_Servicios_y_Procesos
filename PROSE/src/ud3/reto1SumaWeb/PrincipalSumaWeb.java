@@ -1,4 +1,4 @@
-package ud3.sumaWeb;
+package ud3.reto1SumaWeb;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,18 +16,12 @@ public class PrincipalSumaWeb {
 		String php = "suma_parametros.php";
 		int numA, numB;
 		
-		numA = solicitarNumero("Introduce un número: ");
-		numB = solicitarNumero("Introduce un número: ");
+//		numA = solicitarNumero("Introduce un número: ");
+//		numB = solicitarNumero("Introduce un número: ");
+		numA = 3;
+		numB = 2;
 		String calculoPhp = "?PARAM_A="+numA+"&PARAM_B="+numB;
 		
-		/*
-		try {
-			Runtime.getRuntime().exec("C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe "
-					+ host + php + calculoPhp);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		*/
 
 		try {
 			URL url = new URL(host+php+calculoPhp);
