@@ -82,6 +82,7 @@ public class ManagerCalculadora {
 				+ "&SUMANDO_B=" + b);
 
 		URLConnection urlCon = url.openConnection();
+		urlCon.setDoOutput(true);
 		urlCon.connect();
 		System.out.println("URL: " + urlCon.getURL());
 		
@@ -107,6 +108,7 @@ public class ManagerCalculadora {
 				+ "&MINUENDO=" + a
 				+ "&SUSTRAENDO=" + b);
 		URLConnection urlCon = url.openConnection();
+		urlCon.setDoOutput(true);
 		urlCon.connect();
 		System.out.println("URL: " + urlCon.getURL());
 		
@@ -131,6 +133,7 @@ public class ManagerCalculadora {
 				+ "&OPERADOR_1=" + a
 				+ "&OPERADOR_2=" + b);
 		URLConnection urlCon = url.openConnection();
+		urlCon.setDoOutput(true);
 		urlCon.connect();
 		System.out.println("URL: " + urlCon.getURL());
 		
